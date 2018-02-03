@@ -2,7 +2,7 @@ FROM jupyter/base-notebook
 
 MAINTAINER Data Science <datascience@digitalhouse.com>
 
-RUN ["useradd", "-ms", "DS-DH-2018"]
+RUN ["useradd", "-ms", "/bin/bash","DS-DH-2018"]
 
 RUN conda install --yes 'numpy' \
 'scipy'\
