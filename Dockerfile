@@ -9,6 +9,8 @@ ENV NB_USER=DS-DH-2018\
 
 ENV HOME=/home/$NB_USER
 
+USER root
+
 RUN useradd -ms /bin/bash -N -u $NB_UID $NB_USER && \
     mkdir -p $CONDA_DIR && \
     chown $NB_USER:$NB_GID $CONDA_DIR && \
