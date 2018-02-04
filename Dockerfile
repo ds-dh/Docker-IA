@@ -14,7 +14,8 @@ RUN useradd -ms /bin/bash -N -u $NB_UID $NB_USER  && \
     mkdir -p $CONDA_DIR && \
     chown $NB_USER:$NB_GID $CONDA_DIR && \
     fix-permissions $HOME && \
-	fix-permissions $CONDA_DIR
+	fix-permissions $CONDA_DIR && \
+	echo "$NB_USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/notebook 
 
 
 RUN mkdir /home/$NB_USER/notebooks && \
