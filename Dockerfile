@@ -17,8 +17,14 @@ RUN useradd -ms /bin/bash -N -u $NB_UID $NB_USER  && \
     fix-permissions $HOME && \
 	fix-permissions $CONDA_DIR
 
+
+
+
 RUN mkdir /home/$NB_USER/notebooks && \
 	fix-permissions /home/$NB_USER
+
+RUN usermod -aG sudo $NB_USER
+
 
 #RUN conda install --yes 'numpy' 
 # 'scipy'\
