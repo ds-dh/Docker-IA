@@ -4,7 +4,7 @@ LABEL maintainer = "Data Science <datascience@digitalhouse.com>"
 
 CMD ["/bin/bash", "useradd", "DS-DH-2018"]
 
-RUN conda install --yes 'numpy' \
+RUN conda install --yes 'numpy' 
 # 'scipy'\
 # 'statsmodels'\
 # 'sklearn'
