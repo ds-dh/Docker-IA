@@ -2,8 +2,8 @@ FROM jupyter/base-notebook
 
 LABEL maintainer = "Data Science <datascience@digitalhouse.com>"
 
-CMD ["/bin/bash", "useradd", "--disabled-password", "--create-home", "DS-DH-2018"]
-
+#CMD ["/bin/bash", "useradd", "--disabled-password", "--create-home", "DS-DH-2018"]
+RUN useradd -ms /bin/bash DS-DH-2018
 #RUN conda install --yes 'numpy' 
 # 'scipy'\
 # 'statsmodels'\
