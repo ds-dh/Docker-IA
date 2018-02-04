@@ -30,4 +30,4 @@ RUN mkdir /home/$NB_USER/notebooks && \
 USER $NB_USER
 WORKDIR $HOME
 
-CMD ["start-notebook.sh", "--NotebookApp.token=''", "-e", "GRANT_SUDO=yes"]
+CMD ["start-notebook.sh", "--NotebookApp.token=''"]
