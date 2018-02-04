@@ -11,14 +11,11 @@ ENV HOME=/home/$NB_USER
 
 USER root
 
-RUN useradd -ms /bin/bash -N -u $NB_UID $NB_USER && \
+RUN useradd -ms /bin/bash -N -u $NB_UID $NB_USER  && \
     mkdir -p $CONDA_DIR && \
     chown $NB_USER:$NB_GID $CONDA_DIR && \
     fix-permissions $HOME && \
 	fix-permissions $CONDA_DIR
-
-
-USER $NB_USER
 
 RUN mkdir /home/$NB_USER/notebooks && \
 	fix-permissions /home/$NB_USER
@@ -33,4 +30,4 @@ RUN mkdir /home/$NB_USER/notebooks && \
 USER $NB_USER
 WORKDIR $HOME
 
-CMD ["bash"]
+CMD ["start-notebook.sh", "--NotebookApp.token=''", "-e", "GRANT_SUDO=yes"]
