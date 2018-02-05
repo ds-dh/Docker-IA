@@ -34,7 +34,7 @@ RUN conda install --yes 'numpy' \
 'matplotlib' \
 'nltk' \
 
-RUN pip install 'datetime' 'sqlparse' 'ipython-sql' 'sqlalchemy' 'sklearn' 'selenium' 'joblib' 'scikit-image' 'unidetcode' 'geopandas'
+RUN pip install 'datetime' 'sqlparse' 'ipython-sql' 'sqlalchemy' 'scikit-learn' 'selenium' 'joblib' 'scikit-image' 'unidetcode' 'geopandas'
 
 
 USER $NB_USER
