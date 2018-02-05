@@ -23,13 +23,19 @@ RUN mkdir /home/$NB_USER/notebooks && \
 
 RUN usermod -aG sudo $NB_USER
 
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends \
+	python-pip
 
-#RUN conda install --yes 'numpy' 
-# 'scipy'\
-# 'statsmodels'\
-# 'sklearn'
+RUN conda install --yes 'numpy' \
+'scipy' \
+'statsmodels' \
+'sklearn' \
+'matplotlib' \
+'nltk' \
 
-#RUN conda install --yes 'matplotlib' 'seaborn'
+RUN pip install 'datetime' 'sqlparse' 'ipython-sql' 'sqlalchemy' 'sklearn' 'selenium' 'joblib' 'scikit-image' 'unidetcode' 'geopandas'
+
 
 USER $NB_USER
 WORKDIR $HOME
