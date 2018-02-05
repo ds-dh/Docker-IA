@@ -30,7 +30,6 @@ RUN apt-get update && \
 RUN conda install --yes 'numpy' \
 'scipy' \
 'statsmodels' \
-'sklearn' \
 'matplotlib' \
 'nltk' \
 
