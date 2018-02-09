@@ -31,6 +31,7 @@ RUN conda install --yes 'numpy' \
 'scipy' \
 'statsmodels' \
 'matplotlib' \
+'seaborn' \
 'nltk' 
 
 RUN pip install 'datetime' 
@@ -40,8 +41,7 @@ RUN pip install 'sqlalchemy'
 RUN pip install 'scikit-learn' 
 RUN pip install 'selenium' 
 RUN pip install 'joblib' 
-RUN pip install 'scikit-image' 
-RUN pip install 'unidetcode' 
+RUN pip install 'scikit-image'
 RUN pip install 'geopandas'
 
 
