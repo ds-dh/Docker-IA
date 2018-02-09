@@ -42,7 +42,9 @@ RUN pip install 'scikit-learn'
 RUN pip install 'selenium' 
 RUN pip install 'joblib' 
 RUN pip install 'scikit-image'
-RUN pip install 'geopandas'
+
+# geopandas requiere version particular del compilador gcc
+#RUN pip install 'geopandas'
 
 
 USER $NB_USER
