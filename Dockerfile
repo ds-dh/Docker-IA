@@ -25,15 +25,27 @@ RUN usermod -aG sudo $NB_USER
 
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
-	python-pip
+	python-pip \
+	git
 
-RUN conda install --yes 'numpy' \
-'scipy' \
-'statsmodels' \
-'matplotlib' \
-'seaborn' \
-'nltk' 
+RUN conda install --yes 'numpy'
+RUN conda install --yes 'scipy'
+RUN conda install --yes 'statsmodels'
+RUN conda install --yes 'matplotlib'
+RUN conda install --yes 'seaborn' 
+RUN conda install --yes 'nltk'
 
+RUN conda install --yes 'setuptools' 
+RUN conda install --yes 'sqlite' 
+RUN conda install --yes 'bokeh' 
+RUN conda install --yes 'pandas' 
+RUN conda install --yes 'plotly' 
+RUN conda install --yes 'scrapy' 
+RUN conda install --yes 'dill'
+
+
+RUN pip install --upgrade 'ez_setup'
+RUN pip install 'multiprocess' 
 RUN pip install 'datetime' 
 RUN pip install 'sqlparse' 
 RUN pip install 'ipython-sql' 
@@ -42,6 +54,9 @@ RUN pip install 'scikit-learn'
 RUN pip install 'selenium' 
 RUN pip install 'joblib' 
 RUN pip install 'scikit-image'
+RUN pip install 'unidecode'
+
+RUN pip install --upgrade --quiet 'git+https://github.com/esafak/mca'
 
 # geopandas requiere version particular del compilador gcc
 #RUN pip install 'geopandas'
