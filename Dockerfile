@@ -56,7 +56,7 @@ RUN pip install 'selenium'
 RUN pip install 'joblib' 
 RUN pip install 'scikit-image'
 RUN pip install 'unidecode'
-RUN pip install 'geopandas'
+#RUN pip install 'geopandas'
 
 RUN pip install --upgrade --quiet 'git+https://github.com/esafak/mca'
 
