@@ -26,7 +26,7 @@ RUN usermod -aG sudo $NB_USER
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
 	python-pip \
-	git /
+	git \
 	gcc
 
 RUN conda install --yes 'numpy'
@@ -59,10 +59,6 @@ RUN pip install 'unidecode'
 RUN pip install 'geopandas'
 
 RUN pip install --upgrade --quiet 'git+https://github.com/esafak/mca'
-
-# geopandas requiere version particular del compilador gcc
-#RUN pip install 'geopandas'
-
 
 USER $NB_USER
 WORKDIR $HOME
