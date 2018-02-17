@@ -26,8 +26,9 @@ RUN usermod -aG sudo $NB_USER
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
 	python-pip \
-	git \
-	gcc
+	git 
+
+RUN apt-get -y install gcc
 
 RUN conda install --yes 'numpy'
 RUN conda install --yes 'scipy'
@@ -56,7 +57,7 @@ RUN pip install 'selenium'
 RUN pip install 'joblib' 
 RUN pip install 'scikit-image'
 RUN pip install 'unidecode'
-#RUN pip install 'geopandas'
+RUN pip install 'geopandas'
 
 RUN pip install --upgrade --quiet 'git+https://github.com/esafak/mca'
 
