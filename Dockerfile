@@ -28,32 +28,32 @@ RUN apt-get update && \
 	&& rm -rf /var/lib/apt/lists/* 
 
 
-RUN conda_libs='numpy 
-scipy 
-statsmodels 
-matplotlib 
-seaborn 
-nltk 
-setuptools 
-sqlite 
-bokeh 
-pandas 
-plotly 
-scrapy 
+RUN conda_libs='numpy \
+scipy \
+statsmodels \
+matplotlib \
+seaborn \
+nltk \
+setuptools \
+sqlite \
+bokeh \
+pandas \
+plotly \
+scrapy \
 dill' && \
 conda install --yes $conda_libs
 
-RUN pip_libs='ez_setup 
-multiprocess 
-datetime 
-sqlparse 
-ipython-sql 
-sqlalchemy 
-scikit-learn 
-selenium 
-joblib 
-scikit-image 
-unidecode 
+RUN pip_libs='ez_setup \
+multiprocess \
+datetime \
+sqlparse \
+ipython-sql \
+sqlalchemy \
+scikit-learn \
+selenium \
+joblib \
+scikit-image \
+unidecode \
 geopandas' \
 && pip install --upgrade $pip_libs \
 && pip install --quiet 'git+https://github.com/esafak/mca'
