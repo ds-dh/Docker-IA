@@ -15,51 +15,48 @@ RUN useradd -ms /bin/bash -N -u $NB_UID $NB_USER  && \
     chown -R $NB_USER:$NB_GID $CONDA_DIR && \
     fix-permissions $HOME && \
 	fix-permissions $CONDA_DIR && \
-	echo "$NB_USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/notebook 
-
-
-RUN mkdir /home/$NB_USER/notebooks && \
-	fix-permissions /home/$NB_USER
-
-RUN usermod -aG sudo $NB_USER
+	echo "$NB_USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/notebook &&\
+	mkdir /home/$NB_USER/notebooks && \
+	fix-permissions /home/$NB_USER && \
+	usermod -aG sudo $NB_USER
 
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
 	python-pip \
-	git 
-
-RUN apt-get -y install gcc
-
-RUN conda install --yes 'numpy'
-RUN conda install --yes 'scipy'
-RUN conda install --yes 'statsmodels'
-RUN conda install --yes 'matplotlib'
-RUN conda install --yes 'seaborn' 
-RUN conda install --yes 'nltk'
-
-RUN conda install --yes 'setuptools' 
-RUN conda install --yes 'sqlite' 
-RUN conda install --yes 'bokeh' 
-RUN conda install --yes 'pandas' 
-RUN conda install --yes 'plotly' 
-RUN conda install --yes 'scrapy' 
-RUN conda install --yes 'dill'
+	git && \
+	apt-get -y install gcc \
+	&& rm -rf /var/lib/apt/lists/* 
 
 
-RUN pip install --upgrade 'ez_setup'
-RUN pip install 'multiprocess' 
-RUN pip install 'datetime' 
-RUN pip install 'sqlparse' 
-RUN pip install 'ipython-sql' 
-RUN pip install 'sqlalchemy' 
-RUN pip install 'scikit-learn' 
-RUN pip install 'selenium' 
-RUN pip install 'joblib' 
-RUN pip install 'scikit-image'
-RUN pip install 'unidecode'
-RUN pip install 'geopandas'
+RUN conda_libs='numpy 
+scipy 
+statsmodels 
+matplotlib 
+seaborn 
+nltk 
+setuptools 
+sqlite 
+bokeh 
+pandas 
+plotly 
+scrapy 
+dill' && \
+conda install --yes $conda_libs
 
-RUN pip install --upgrade --quiet 'git+https://github.com/esafak/mca'
+RUN pip_libs='ez_setup 
+multiprocess 
+datetime 
+sqlparse 
+ipython-sql 
+sqlalchemy 
+scikit-learn 
+selenium 
+joblib 
+scikit-image 
+unidecode 
+geopandas' \
+&& pip install --upgrade $pip_libs \
+&& pip install --quiet 'git+https://github.com/esafak/mca'
 
 USER $NB_USER
 WORKDIR $HOME
