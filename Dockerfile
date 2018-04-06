@@ -4,7 +4,7 @@ LABEL maintainer = "Data Science <datascience@digitalhouse.com>"
 
 
 ENV NB_USER=IA-DH-2018\
-	NB_UID=1001
+	NB_UID=1002
 
 ENV HOME=/home/$NB_USER
 
