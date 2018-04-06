@@ -20,16 +20,8 @@ RUN useradd -ms /bin/bash -N -u $NB_UID $NB_USER  && \
 	fix-permissions /home/$NB_USER && \
 	usermod -aG sudo $NB_USER
 
-RUN apt-get update && \
-	apt-get install -y --no-install-recommends \
-	python-pip \
-	git && \
-	apt-get -y install gcc \
-	&& rm -rf /var/lib/apt/lists/* 
-
 RUN pip_libs='tensorflow \
-keras '
-
+keras' \
 && pip install --upgrade $pip_libs \
 
 USER $NB_USER
