@@ -1,9 +1,9 @@
-FROM jupyter/base-notebook
+FROM dsdh/docker-ds
 
 LABEL maintainer = "Data Science <datascience@digitalhouse.com>"
 
 
-ENV NB_USER=DS-DH-2018\
+ENV NB_USER=IA-DH-2018\
 	NB_UID=1001
 
 ENV HOME=/home/$NB_USER
@@ -27,36 +27,10 @@ RUN apt-get update && \
 	apt-get -y install gcc \
 	&& rm -rf /var/lib/apt/lists/* 
 
+RUN pip_libs='tensorflow \
+keras '
 
-RUN conda_libs='numpy \
-scipy \
-statsmodels \
-matplotlib \
-seaborn \
-nltk \
-setuptools \
-sqlite \
-bokeh \
-pandas \
-plotly \
-scrapy \
-dill' && \
-conda install --yes $conda_libs
-
-RUN pip_libs='ez_setup \
-multiprocess \
-datetime \
-sqlparse \
-ipython-sql \
-sqlalchemy \
-scikit-learn \
-selenium \
-joblib \
-scikit-image \
-unidecode \
-geopandas' \
 && pip install --upgrade $pip_libs \
-&& pip install --quiet 'git+https://github.com/esafak/mca'
 
 USER $NB_USER
 WORKDIR $HOME
