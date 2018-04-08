@@ -22,7 +22,7 @@ RUN useradd -ms /bin/bash -N -u $NB_UID $NB_USER  && \
 
 RUN pip_libs='tensorflow \
 keras' \
-&& pip install --upgrade $pip_libs \
+&& pip install --upgrade $pip_libs 
 
 USER $NB_USER
 WORKDIR $HOME
